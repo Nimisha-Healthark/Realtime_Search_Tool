@@ -4,7 +4,7 @@ streamlit
 googlesearch-python
 requests
 beautifulsoup4
-pinecone-client
+pinecone
 openai==0.28
 pandas
 oauth2client
