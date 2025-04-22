@@ -1,0 +1,10 @@
+datetime
+gspread
+streamlit
+googlesearch-python
+requests
+beautifulsoup4
+pinecone-client
+openai==0.28
+pandas
+oauth2client
