@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import gspread
 import streamlit as st
 from googlesearch import search
