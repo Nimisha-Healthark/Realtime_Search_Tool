@@ -42,7 +42,7 @@ def log_tokens_to_sheet(query, tokens_used,response,answer_type):
         sheet = connect_to_google_sheet(sheet_name)
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         sheet.append_row([timestamp, query, response, tokens_used,answer_type])
-        st.write("Logging:", [timestamp, query, response, tokens_used, answer_type])
+        # st.write("Logging:", [timestamp, query, response, tokens_used, answer_type])
     except Exception as e:
         st.error(f"Failed to log tokens: {e}")
         print(f"Error: {e}")
