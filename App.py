@@ -35,13 +35,13 @@ def connect_to_google_sheet(sheet_name):
         raise
 
 # Log tokens to the Google Sheet
-def log_tokens_to_sheet(query, tokens_used,response):
+def log_tokens_to_sheet(query, tokens_used,response,answer_type):
     try:
         # Connect to the sheet
         sheet_name = "GPT_log"
         sheet = connect_to_google_sheet(sheet_name)
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        sheet.append_row([timestamp, query, response, tokens_used])
+        sheet.append_row([timestamp, query, response, tokens_used,answer_type])
     except Exception as e:
         st.error(f"Failed to log tokens: {e}")
         print(f"Error: {e}")
@@ -224,7 +224,7 @@ if submit:
                     max_tokens = 500 if answer_type == "Short" else 4096
                     response_type_instruction = "Provide a short answer." if answer_type == "Short" else "Provide a detailed answer."
                     answer, prompt_tokens, completion_tokens = get_gpt4_combine_response(context, query, max_tokens, 0.2, response_type_instruction,start_year, end_year)
-                    log_tokens_to_sheet(query, prompt_tokens+completion_tokens,answer)
+                    log_tokens_to_sheet(query, prompt_tokens+completion_tokens,answer,answer_type)
                      # Display GPT response
                     st.markdown("### GPT Response")
                     st.write(answer)
